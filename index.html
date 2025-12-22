@@ -404,6 +404,19 @@
     }
 
     init();
+    // ✅ オフライン対応：Service Worker 登録
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", async () => {
+    try {
+      await navigator.serviceWorker.register("./sw.js");
+      // console.log("Service Worker registered");
+    } catch (err) {
+      console.warn("Service Worker registration failed:", err);
+    }
+  });
+}
+
   </script>
 </body>
 </html>
+
